@@ -1,1 +1,14 @@
-
+{
+  "generated_at": "2026-07-25T02:19:15.007337Z",
+  "stats": {
+    "total_servers": 0,
+    "working_servers": 0,
+    "dead_servers": 0,
+    "excluded_servers": 0,
+    "last_run_id": null,
+    "last_run_at": null,
+    "last_run_working": 0
+  },
+  "server_count": 0,
+  "servers": []
+}
