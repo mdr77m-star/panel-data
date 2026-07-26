@@ -1,0 +1,538 @@
+# =====================================================================
+# 📡 Server Update Notifier — V2Store Panel
+# =====================================================================
+# Triggers whenever clean_sub.txt is updated, analyzes the changes,
+# and broadcasts notifications across multiple channels:
+#   → Firebase Cloud Messaging (FCM) — push to Android app
+#   → Telegram channel
+#   → Discord webhook
+# =====================================================================
+
+name: 📡 Server Update Notifier
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'clean_sub.txt'
+  schedule:
+    # Daily health-check: even if no push, remind users the service is alive
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+    inputs:
+      custom_title:
+        description: 'Custom notification title (optional)'
+        required: false
+        type: string
+        default: ''
+      custom_body:
+        description: 'Custom notification body (optional)'
+        required: false
+        type: string
+        default: ''
+
+# ── Concurrency ────────────────────────────────────────────────────
+# Only one notification run at a time; cancel a stale one if a newer
+# push arrives before the previous run finishes.
+concurrency:
+  group: server-update-notify-${{ github.ref }}
+  cancel-in-progress: true
+
+# ── Environment ────────────────────────────────────────────────────
+# Firebase & Telegram secrets are stored in GitHub Secrets.
+env:
+  PYTHON_VERSION: '3.11'
+  APP_NAME: 'V2Store VPN'
+
+jobs:
+  # =================================================================
+  # JOB : analyze-and-notify
+  # =================================================================
+  analyze-and-notify:
+    name: 🔍 Analyze Changes & Broadcast
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+
+    outputs:
+      servers_added: ${{ steps.analyze.outputs.servers_added }}
+      servers_removed: ${{ steps.analyze.outputs.servers_removed }}
+      total_servers: ${{ steps.analyze.outputs.total_servers }}
+      protocols: ${{ steps.analyze.outputs.protocols }}
+      changed: ${{ steps.analyze.outputs.changed }}
+
+    steps:
+      # ── Step 1 ────────────────────────────────────────────────
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # need HEAD and HEAD^ to diff clean_sub.txt
+
+      # ── Step 2 ────────────────────────────────────────────────
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      # ── Step 3 ────────────────────────────────────────────────
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --quiet google-auth google-auth-httplib2 requests
+
+      # ── Step 4 ────────────────────────────────────────────────
+      - name: 📊 Analyze Server Changes
+        id: analyze
+        run: |
+          python3 << 'PYEOF'
+          import base64, os, subprocess
+
+          changed = False
+          servers_added = 0
+          servers_removed = 0
+          total_servers = 0
+
+          def decode_if_b64(text):
+              """Decode base64 content if it looks encoded."""
+              clean = text.strip().replace('\n', '').replace('\r', '')
+              if '://' not in clean:
+                  try:
+                      decoded = base64.b64decode(clean).decode('utf-8')
+                      if '://' in decoded:
+                          return decoded
+                  except Exception:
+                      pass
+              return text
+
+          def count_protocols(content):
+              """Count servers by protocol from subscription text."""
+              counts = {}
+              for line in content.strip().split('\n'):
+                  line = line.strip()
+                  if not line:
+                      continue
+                  if line.startswith('vmess://'):
+                      counts['VMess'] = counts.get('VMess', 0) + 1
+                  elif line.startswith('vless://'):
+                      counts['VLess'] = counts.get('VLess', 0) + 1
+                  elif line.startswith('trojan://'):
+                      counts['Trojan'] = counts.get('Trojan', 0) + 1
+                  elif line.startswith('ss://') or line.startswith('shadowsocks://'):
+                      counts['Shadowsocks'] = counts.get('Shadowsocks', 0) + 1
+                  elif line.startswith('hysteria2://') or line.startswith('hy2://'):
+                      counts['Hysteria2'] = counts.get('Hysteria2', 0) + 1
+                  else:
+                      counts['Other'] = counts.get('Other', 0) + 1
+              return counts
+
+          # ── Read current (new) file ─────────────────────────────
+          try:
+              with open('clean_sub.txt', 'r', encoding='utf-8') as f:
+                  new_raw = f.read()
+          except FileNotFoundError:
+              new_raw = ''
+
+          new_content = decode_if_b64(new_raw)
+          new_protocols = count_protocols(new_content)
+          total_servers = sum(new_protocols.values())
+
+          # ── Read previous version from git ──────────────────────
+          try:
+              result = subprocess.run(
+                  ['git', 'show', 'HEAD^:clean_sub.txt'],
+                  capture_output=True, text=True, timeout=10
+              )
+              if result.returncode == 0:
+                  old_raw = result.stdout
+              else:
+                  old_raw = ''
+          except Exception:
+              old_raw = ''
+
+          if old_raw.strip():
+              old_content = decode_if_b64(old_raw)
+              old_protocols = count_protocols(old_content)
+              old_total = sum(old_protocols.values())
+
+              # Diff
+              for proto, cnt in new_protocols.items():
+                  old_cnt = old_protocols.get(proto, 0)
+                  if cnt > old_cnt:
+                      servers_added += cnt - old_cnt
+              for proto, cnt in old_protocols.items():
+                  new_cnt = new_protocols.get(proto, 0)
+                  if cnt > new_cnt:
+                      servers_removed += cnt - new_cnt
+
+              changed = (servers_added > 0 or servers_removed > 0 or
+                        set(new_protocols.keys()) != set(old_protocols.keys()))
+          else:
+              changed = total_servers > 0
+              servers_added = total_servers
+
+          # ── Build protocol summary string ───────────────────────
+          proto_parts = []
+          for proto in ['VMess', 'VLess', 'Trojan', 'Shadowsocks', 'Hysteria2', 'Other']:
+              if proto in new_protocols:
+                  proto_parts.append(f"{proto}: {new_protocols[proto]}")
+          protocol_summary = ' | '.join(proto_parts)
+
+          # ── Output for next steps ───────────────────────────────
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f"servers_added={servers_added}\n")
+              f.write(f"servers_removed={servers_removed}\n")
+              f.write(f"total_servers={total_servers}\n")
+              f.write(f"protocols={protocol_summary}\n")
+              f.write(f"changed={'true' if changed else 'false'}\n")
+
+          print(f"::notice::Analysis complete: +{servers_added}/-{servers_removed} servers, {total_servers} total | {protocol_summary}")
+          PYEOF
+
+      # ── Step 5 ────────────────────────────────────────────────
+      - name: 📱 Send FCM Push Notification
+        id: fcm
+        if: always() && (steps.analyze.outputs.changed == 'true' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule')
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          python3 << 'PYEOF'
+          import json, os, requests, datetime
+          from google.oauth2 import service_account
+          from google.auth.transport.requests import Request
+
+          # ── Resolve title & body ──────────────────────────────────
+          custom_title = "${{ github.event.inputs.custom_title }}"
+          custom_body  = "${{ github.event.inputs.custom_body }}"
+
+          # On schedule runs, send a "still alive" ping
+          if "${{ github.event_name }}" == "schedule":
+              title = "☀️ Daily Server Check"
+              body = "Your V2Store servers are being monitored. Open the app to see the latest list."
+          elif custom_title and custom_body:
+              title = custom_title
+              body = custom_body
+          else:
+              added  = ${{ steps.analyze.outputs.servers_added }}
+              removed = ${{ steps.analyze.outputs.servers_removed }}
+              total  = ${{ steps.analyze.outputs.total_servers }}
+              title = "🆕 Servers Updated!"
+              if added > 0 and removed > 0:
+                  body = f"+{added} new · –{removed} removed · {total} servers ready 🚀"
+              elif added > 0:
+                  body = f"+{added} new servers added · {total} total 🚀"
+              elif removed > 0:
+                  body = f"–{removed} servers removed · {total} remaining ✅"
+              else:
+                  body = f"{total} servers available — check them now! 📡"
+
+          # ── Send via Firebase Cloud Messaging v1 API ──────────────
+          try:
+              sa_json = os.environ.get('FIREBASE_SERVICE_ACCOUNT')
+              if not sa_json or sa_json == '':
+                  print("::warning::FIREBASE_SERVICE_ACCOUNT secret not set — skipping FCM")
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                      f.write("fcm_ok=false\n")
+                      f.write("fcm_error=missing_secret\n")
+                  exit(0)
+
+              service_account_info = json.loads(sa_json)
+              creds = service_account.Credentials.from_service_account_info(
+                  service_account_info,
+                  scopes=['https://www.googleapis.com/auth/firebase.messaging']
+              )
+              creds.refresh(Request())
+              token = creds.token
+              project_id = service_account_info.get('project_id', 'vpn-fire-8fd14')
+
+              url = f'https://fcm.googleapis.com/v1/projects/{project_id}/messages:send'
+              headers = {
+                  'Authorization': f'Bearer {token}',
+                  'Content-Type': 'application/json'
+              }
+
+              payload = {
+                  'message': {
+                      'topic': 'server_updates',
+                      'android': {
+                          'notification': {
+                              'title': title,
+                              'body': body,
+                              'icon': 'ic_launcher_round',
+                              'color': '#3B82F6',
+                              'click_action': 'OPEN_MAIN_ACTIVITY',
+                              'priority': 'high',
+                              'channel_id': 'server_updates_channel',
+                              'notification_count': 1,
+                          }
+                      }
+                  }
+              }
+
+              response = requests.post(url, headers=headers, json=payload, timeout=15)
+              result = response.json()
+
+              if response.ok:
+                  msg_id = result.get('name', 'unknown')
+                  print(f"::notice::FCM sent successfully — message_id: {msg_id}")
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                      f.write(f"fcm_ok=true\n")
+                      f.write(f"fcm_message_id={msg_id}\n")
+              else:
+                  error = result.get('error', {}).get('message', str(result))
+                  print(f"::warning::FCM send failed: {error}")
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                      f.write("fcm_ok=false\n")
+                      f.write(f"fcm_error={error}\n")
+
+          except Exception as e:
+              print(f"::warning::FCM exception: {e}")
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write("fcm_ok=false\n")
+                  f.write(f"fcm_error={e}\n")
+          PYEOF
+
+      # ── Step 6 ────────────────────────────────────────────────
+      - name: ✈️ Send Telegram Notification
+        id: telegram
+        if: always() && steps.analyze.outputs.changed == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 << 'PYEOF'
+          import os, requests, datetime
+
+          bot_token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+          chat_id   = os.environ.get('TELEGRAM_CHAT_ID', '')
+
+          if not bot_token or not chat_id:
+              print("::warning::Telegram secrets not set — skipping")
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write("telegram_ok=false\n")
+                  f.write("telegram_error=missing_secrets\n")
+              exit(0)
+
+          added   = ${{ steps.analyze.outputs.servers_added }}
+          removed = ${{ steps.analyze.outputs.servers_removed }}
+          total   = ${{ steps.analyze.outputs.total_servers }}
+          protocols = "${{ steps.analyze.outputs.protocols }}"
+
+          commit_msg = "${{ github.event.head_commit.message }}"
+          if not commit_msg:
+              commit_msg = "Manual trigger"
+
+          now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+
+          # ── Build a rich HTML message ─────────────────────────────
+          lines = []
+          lines.append("<b>📡 V2Store Server Update</b>")
+          lines.append("")
+          lines.append(f"<b>Status:</b> {'🟢 Changed' if added > 0 or removed > 0 else '🔵 No changes'}")
+          if added > 0:
+              lines.append(f"<b>➕ Added:</b> {added} servers")
+          if removed > 0:
+              lines.append(f"<b>➖ Removed:</b> {removed} servers")
+          lines.append(f"<b>📊 Total:</b> {total} servers")
+          lines.append(f"<b>🔌 Protocols:</b> {protocols}")
+          lines.append("")
+          lines.append(f"<b>📝 Commit:</b> <code>{commit_msg[:100]}</code>")
+          lines.append(f"<b>⏰ Time:</b> {now}")
+          lines.append("")
+          lines.append("<a href='https://github.com/${{ github.repository }}'>🔗 View Repository</a>")
+          message = '\n'.join(lines)
+
+          try:
+              url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+              r = requests.post(url, json={
+                  'chat_id': chat_id,
+                  'text': message,
+                  'parse_mode': 'HTML',
+                  'disable_web_page_preview': False,
+              }, timeout=10)
+
+              if r.ok:
+                  print("::notice::Telegram notification sent successfully")
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                      f.write("telegram_ok=true\n")
+              else:
+                  print(f"::warning::Telegram send failed: {r.text}")
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                      f.write("telegram_ok=false\n")
+                      f.write(f"telegram_error={r.text}\n")
+          except Exception as e:
+              print(f"::warning::Telegram exception: {e}")
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write("telegram_ok=false\n")
+                  f.write(f"telegram_error={e}\n")
+          PYEOF
+
+      # ── Step 7 ────────────────────────────────────────────────
+      - name: 💬 Send Discord Notification
+        id: discord
+        if: always() && steps.analyze.outputs.changed == 'true'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          python3 << 'PYEOF'
+          import os, requests, datetime
+
+          webhook_url = os.environ.get('DISCORD_WEBHOOK', '')
+          if not webhook_url:
+              print("::warning::Discord webhook secret not set — skipping")
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write("discord_ok=false\n")
+                  f.write("discord_error=missing_secret\n")
+              exit(0)
+
+          added   = ${{ steps.analyze.outputs.servers_added }}
+          removed = ${{ steps.analyze.outputs.servers_removed }}
+          total   = ${{ steps.analyze.outputs.total_servers }}
+          protocols = "${{ steps.analyze.outputs.protocols }}"
+
+          now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+
+          # ── Build a rich Discord embed ────────────────────────────
+          color = 0x3B82F6  # blue accent
+          if added > 0 and removed == 0:
+              color = 0x22C55E  # green — only additions
+          elif removed > 0:
+              color = 0xF59E0B  # amber — removals present
+
+          embed = {
+              'title': '📡 V2Store Server Update',
+              'color': color,
+              'fields': [
+                  {
+                      'name': '📊 Total Servers',
+                      'value': str(total),
+                      'inline': True
+                  }
+              ],
+              'footer': {
+                  'text': f'V2Store Panel • {now}'
+              },
+              'timestamp': datetime.datetime.utcnow().isoformat() + 'Z'
+          }
+
+          if added > 0:
+              embed['fields'].append({
+                  'name': '➕ Added',
+                  'value': str(added),
+                  'inline': True
+              })
+          if removed > 0:
+              embed['fields'].append({
+                  'name': '➖ Removed',
+                  'value': str(removed),
+                  'inline': True
+              })
+
+          if protocols:
+              embed['fields'].append({
+                  'name': '🔌 Protocols',
+                  'value': protocols,
+                  'inline': False
+              })
+
+          try:
+              r = requests.post(webhook_url, json={
+                  'embeds': [embed],
+                  'username': 'V2Store Server Monitor',
+                  'avatar_url': 'https://raw.githubusercontent.com/${{ github.repository }}/main/.github/icon.png',
+              }, timeout=10)
+
+              if r.ok or r.status_code == 204:
+                  print("::notice::Discord notification sent successfully")
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                      f.write("discord_ok=true\n")
+              else:
+                  print(f"::warning::Discord send failed: {r.status_code} {r.text}")
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                      f.write("discord_ok=false\n")
+                      f.write(f"discord_error={r.status_code}\n")
+          except Exception as e:
+              print(f"::warning::Discord exception: {e}")
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write("discord_ok=false\n")
+                  f.write(f"discord_error={e}\n")
+          PYEOF
+
+      # ── Step 8 ────────────────────────────────────────────────
+      - name: 📋 Generate Job Summary
+        if: always()
+        run: |
+          python3 << 'PYEOF'
+          import os
+
+          changed   = "${{ steps.analyze.outputs.changed }}"
+          added     = "${{ steps.analyze.outputs.servers_added }}"
+          removed   = "${{ steps.analyze.outputs.servers_removed }}"
+          total     = "${{ steps.analyze.outputs.total_servers }}"
+          protocols = "${{ steps.analyze.outputs.protocols }}"
+          fcm_ok    = "${{ steps.fcm.outputs.fcm_ok }}"
+          tg_ok     = "${{ steps.telegram.outputs.telegram_ok }}"
+          dc_ok     = "${{ steps.discord.outputs.discord_ok }}"
+
+          summary = []
+          summary.append('# 📡 Server Update Notification Report')
+          summary.append('')
+          summary.append('| Metric | Value |')
+          summary.append('|--------|-------|')
+          summary.append('| **Repository** | ${{ github.repository }} |')
+          summary.append('| **Event** | ${{ github.event_name }} |')
+          summary.append('| **Branch** | ${{ github.ref_name }} |')
+          summary.append('| **Commit** | ${{ github.sha }} |')
+          summary.append('| **Triggered by** | ${{ github.triggering_actor }} |')
+          summary.append('')
+
+          summary.append('## 📊 Server Statistics')
+          summary.append('')
+          summary.append(f'| Stat | Value |')
+          summary.append(f'|------|-------|')
+          summary.append(f'| **Total Servers** | {total} |')
+          summary.append(f'| **Added** | {added} |')
+          summary.append(f'| **Removed** | {removed} |')
+          summary.append(f'| **Changed** | {changed} |')
+          summary.append(f'| **Protocols** | {protocols} |')
+          summary.append('')
+
+          summary.append('## 📨 Notification Delivery')
+          summary.append('')
+          summary.append(f'| Channel | Status |')
+          summary.append(f'|---------|--------|')
+          summary.append(f'| 📱 **FCM (Android App)** | {"✅ Delivered" if fcm_ok == "true" else "❌ Failed"} |')
+          summary.append(f'| ✈️ **Telegram** | {"✅ Delivered" if tg_ok == "true" else "⏭️ Skipped"} |')
+          summary.append(f'| 💬 **Discord** | {"✅ Delivered" if dc_ok == "true" else "⏭️ Skipped"} |')
+          summary.append('')
+
+          if changed == "false":
+              summary.append('> ℹ️ No server changes detected — notifications were sent as health-check.')
+          else:
+              summary.append('> ✅ Server list updated — all channels notified.')
+
+          summary.append('')
+          summary.append('---')
+          summary.append('_Generated by V2Store Server Update Notifier_')
+
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'w') as f:
+              f.write('\n'.join(summary))
+          PYEOF
+
+      # ── Step 9 ────────────────────────────────────────────────
+      - name: ✅ Final Status
+        if: always()
+        run: |
+          echo "═══════════════════════════════════════════════════════"
+          echo "  📡 Server Update Notification Complete"
+          echo "═══════════════════════════════════════════════════════"
+          echo ""
+          echo "  📊 Servers: +${{ steps.analyze.outputs.servers_added }}/-${{ steps.analyze.outputs.servers_removed }} = ${{ steps.analyze.outputs.total_servers }} total"
+          echo "  📱 FCM:      ${{ steps.fcm.outputs.fcm_ok }}"
+          echo "  ✈️ Telegram: ${{ steps.telegram.outputs.telegram_ok }}"
+          echo "  💬 Discord:  ${{ steps.discord.outputs.discord_ok }}"
+          echo ""
+          echo "  🔗 https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          echo "═══════════════════════════════════════════════════════"
