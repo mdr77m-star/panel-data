@@ -253,18 +253,18 @@ jobs:
                   'Content-Type': 'application/json'
               }
 
+              # FCM v1 API: priority goes in android root, NOT inside notification
               payload = {
                   'message': {
                       'topic': 'server_updates',
                       'android': {
+                          'priority': 'HIGH',
                           'notification': {
                               'title': title,
                               'body': body,
                               'icon': 'ic_launcher_round',
                               'color': '#3B82F6',
                               'click_action': 'OPEN_MAIN_ACTIVITY',
-                              'priority': 'high',
-                              'channel_id': 'server_updates_channel',
                               'notification_count': 1,
                           }
                       }
