@@ -1,84 +1,74 @@
 {
-  "generated_at": "2026-10-18T05:10:22.107280Z",
+  "generated_at": "2026-10-19T05:05:04.637211Z",
   "stats": {
-    "total_servers": 1207,
-    "working_servers": 120,
-    "dead_servers": 1087,
+    "total_servers": 1228,
+    "working_servers": 118,
+    "dead_servers": 1110,
     "excluded_servers": 0,
     "last_run_id": 1,
-    "last_run_at": "2026-10-18T03:50:16.853149",
-    "last_run_working": 3035
+    "last_run_at": "2026-10-19T03:59:55.601074",
+    "last_run_working": 2546
   },
-  "server_count": 120,
+  "server_count": 118,
   "servers": [
     {
-      "fingerprint": "43566cc26e0bfb9b",
-      "host": "15.204.246.132",
-      "port": 7307,
-      "protocol": "ss",
+      "fingerprint": "af165629a11bc103",
+      "host": "129.146.77.248",
+      "port": 39495,
+      "protocol": "vmess",
       "name": "",
       "country_code": "US",
-      "latency_ms": 47,
+      "latency_ms": 49,
       "score": 100.0
     },
     {
-      "fingerprint": "f24405321a250af7",
-      "host": "137.184.218.169",
-      "port": 36925,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 66,
-      "score": 99.9
-    },
-    {
-      "fingerprint": "d22ff5a696c6229a",
-      "host": "198.98.53.130",
+      "fingerprint": "87d331b67c929895",
+      "host": "173.244.56.6",
       "port": 443,
       "protocol": "ss",
       "name": "",
       "country_code": "US",
-      "latency_ms": 59,
-      "score": 99.9
+      "latency_ms": 75,
+      "score": 99.8
     },
     {
-      "fingerprint": "b631d5de2cb93d2c",
-      "host": "159.89.87.21",
-      "port": 28190,
-      "protocol": "vless",
+      "fingerprint": "3fc491f41b7b9606",
+      "host": "173.244.56.9",
+      "port": 443,
+      "protocol": "ss",
       "name": "",
       "country_code": "US",
       "latency_ms": 70,
       "score": 99.8
     },
     {
-      "fingerprint": "724785c50e5d47eb",
-      "host": "15.204.247.206",
-      "port": 4444,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 80,
-      "score": 99.8
-    },
-    {
-      "fingerprint": "a7d251ede42e6c66",
-      "host": "37.19.198.236",
+      "fingerprint": "fb9e15800dca378a",
+      "host": "156.146.38.169",
       "port": 443,
       "protocol": "ss",
       "name": "",
       "country_code": "US",
-      "latency_ms": 71,
-      "score": 99.8
+      "latency_ms": 91,
+      "score": 99.7
     },
     {
-      "fingerprint": "18796303c8fdd2ba",
-      "host": "169.40.42.224",
+      "fingerprint": "30c61fe5d8f47f6f",
+      "host": "156.146.38.167",
       "port": 443,
-      "protocol": "vless",
+      "protocol": "ss",
       "name": "",
       "country_code": "US",
-      "latency_ms": 90,
+      "latency_ms": 91,
+      "score": 99.7
+    },
+    {
+      "fingerprint": "dd55421cab9a12ed",
+      "host": "142.249.37.90",
+      "port": 44356,
+      "protocol": "hysteria2",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 81,
       "score": 99.7
     },
     {
@@ -88,18 +78,8 @@
       "protocol": "ss",
       "name": "",
       "country_code": "US",
-      "latency_ms": 112,
-      "score": 99.5
-    },
-    {
-      "fingerprint": "fb9e15800dca378a",
-      "host": "156.146.38.169",
-      "port": 443,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 118,
-      "score": 99.5
+      "latency_ms": 87,
+      "score": 99.7
     },
     {
       "fingerprint": "0bed272f3316495c",
@@ -108,97 +88,117 @@
       "protocol": "ss",
       "name": "",
       "country_code": "US",
-      "latency_ms": 120,
-      "score": 99.4
+      "latency_ms": 87,
+      "score": 99.7
     },
     {
-      "fingerprint": "ac6e1952bdf5e90c",
-      "host": "67.220.95.3",
+      "fingerprint": "bd6d324b0e1930f5",
+      "host": "15.204.97.214",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 151,
+      "score": 99.2
+    },
+    {
+      "fingerprint": "66512504710717b9",
+      "host": "15.204.97.198",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 148,
+      "score": 99.2
+    },
+    {
+      "fingerprint": "82dd4de96eb60a84",
+      "host": "15.204.97.216",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 146,
+      "score": 99.2
+    },
+    {
+      "fingerprint": "6807fd4252eb5cb2",
+      "host": "15.204.97.206",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 153,
+      "score": 99.2
+    },
+    {
+      "fingerprint": "d9e32bf034471e50",
+      "host": "15.204.97.197",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 154,
+      "score": 99.2
+    },
+    {
+      "fingerprint": "46d9a49407e3e21d",
+      "host": "15.204.97.219",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 146,
+      "score": 99.2
+    },
+    {
+      "fingerprint": "d23d41499f8e891f",
+      "host": "15.204.97.195",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 148,
+      "score": 99.2
+    },
+    {
+      "fingerprint": "6fb1b8bb1e88a1cb",
+      "host": "149.22.95.183",
+      "port": 443,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "CA",
+      "latency_ms": 155,
+      "score": 99.2
+    },
+    {
+      "fingerprint": "3644e8784d87c416",
+      "host": "38.110.1.246",
       "port": 18000,
       "protocol": "vmess",
       "name": "",
       "country_code": "US",
-      "latency_ms": 87,
-      "score": 99.3
+      "latency_ms": 172,
+      "score": 99.0
     },
     {
-      "fingerprint": "87d331b67c929895",
-      "host": "173.244.56.6",
-      "port": 443,
+      "fingerprint": "dc789246de6f2665",
+      "host": "15.204.233.41",
+      "port": 8882,
       "protocol": "ss",
       "name": "",
       "country_code": "US",
-      "latency_ms": 177,
-      "score": 99.0
+      "latency_ms": 195,
+      "score": 98.8
     },
     {
-      "fingerprint": "be812b4a95b4772f",
-      "host": "129.146.143.80",
-      "port": 48111,
-      "protocol": "vmess",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 177,
-      "score": 99.0
-    },
-    {
-      "fingerprint": "89e11f04506b68e8",
-      "host": "169.40.42.212",
-      "port": 443,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 214,
-      "score": 98.7
-    },
-    {
-      "fingerprint": "10c52de15d435b26",
-      "host": "169.40.42.173",
-      "port": 443,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 214,
-      "score": 98.7
-    },
-    {
-      "fingerprint": "8aa9f5d64da4dc48",
-      "host": "169.40.42.232",
-      "port": 443,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 210,
-      "score": 98.7
-    },
-    {
-      "fingerprint": "1a3f531db8bd725c",
-      "host": "169.40.42.15",
-      "port": 443,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 210,
-      "score": 98.7
-    },
-    {
-      "fingerprint": "3fc491f41b7b9606",
-      "host": "173.244.56.9",
+      "fingerprint": "a7d251ede42e6c66",
+      "host": "37.19.198.236",
       "port": 443,
       "protocol": "ss",
       "name": "",
       "country_code": "US",
       "latency_ms": 221,
-      "score": 98.6
-    },
-    {
-      "fingerprint": "af165629a11bc103",
-      "host": "129.146.77.248",
-      "port": 39495,
-      "protocol": "vmess",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 228,
       "score": 98.6
     },
     {
@@ -208,658 +208,28 @@
       "protocol": "vless",
       "name": "",
       "country_code": "US",
-      "latency_ms": 49,
+      "latency_ms": 233,
       "score": 98.5
     },
     {
-      "fingerprint": "6fb1b8bb1e88a1cb",
-      "host": "149.22.95.183",
-      "port": 443,
-      "protocol": "ss",
+      "fingerprint": "f24405321a250af7",
+      "host": "137.184.218.169",
+      "port": 36925,
+      "protocol": "vless",
       "name": "",
-      "country_code": "CA",
-      "latency_ms": 242,
+      "country_code": "US",
+      "latency_ms": 246,
       "score": 98.4
     },
     {
-      "fingerprint": "1dbd6b3b054e1798",
-      "host": "158.173.20.208",
-      "port": 443,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 287,
-      "score": 98.1
-    },
-    {
-      "fingerprint": "46dac716ce70d673",
-      "host": "141.98.101.181",
-      "port": 443,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "GB",
-      "latency_ms": 292,
-      "score": 98.0
-    },
-    {
-      "fingerprint": "ec16276a73f27ba0",
-      "host": "82.38.31.62",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 302,
-      "score": 98.0
-    },
-    {
-      "fingerprint": "e6889f7a77edbb97",
-      "host": "82.38.31.61",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 303,
-      "score": 98.0
-    },
-    {
-      "fingerprint": "7447f6f85c95cb71",
-      "host": "193.29.139.235",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 301,
-      "score": 98.0
-    },
-    {
-      "fingerprint": "8579f1755a543baa",
-      "host": "185.226.172.8",
-      "port": 8008,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "DE",
-      "latency_ms": 295,
-      "score": 98.0
-    },
-    {
-      "fingerprint": "484fc06b10f531e7",
-      "host": "82.38.31.175",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 300,
-      "score": 98.0
-    },
-    {
-      "fingerprint": "6efb3e24f1655e1f",
-      "host": "82.38.31.210",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 301,
-      "score": 98.0
-    },
-    {
-      "fingerprint": "82bfbc25b8f1a176",
-      "host": "82.38.31.162",
-      "port": 443,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 306,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "c77dbf6c8b24d0e7",
-      "host": "82.38.31.155",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 310,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "82dd4de96eb60a84",
-      "host": "15.204.97.216",
-      "port": 23576,
+      "fingerprint": "d244268ccfd09b2c",
+      "host": "159.89.87.21",
+      "port": 28190,
       "protocol": "vless",
       "name": "",
       "country_code": "US",
-      "latency_ms": 316,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "6807fd4252eb5cb2",
-      "host": "15.204.97.206",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 310,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "66512504710717b9",
-      "host": "15.204.97.198",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 312,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "bd6d324b0e1930f5",
-      "host": "15.204.97.214",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 313,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "2601b62d08c5ad9d",
-      "host": "178.83.185.156",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 305,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "76c5642cdc431aed",
-      "host": "82.38.31.202",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 315,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "548b19f2284d38c8",
-      "host": "82.38.31.205",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 313,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "103e7f6d073cfe03",
-      "host": "82.38.31.66",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 306,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "6ee884060f5ffa15",
-      "host": "82.38.31.69",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 313,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "48a682518e7b05c6",
-      "host": "82.38.31.35",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 307,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "91a4d30cf1873e6f",
-      "host": "82.38.31.174",
-      "port": 443,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 316,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "2fea3843d13512b7",
-      "host": "193.29.139.204",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 313,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "1df74ea6b7f86301",
-      "host": "193.29.139.151",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 314,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "d23d41499f8e891f",
-      "host": "15.204.97.195",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 315,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "cd94b5db5bd4a359",
-      "host": "8.209.74.72",
-      "port": 20001,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "DE",
-      "latency_ms": 313,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "ea7fdafe0a74a163",
-      "host": "82.38.31.199",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 311,
-      "score": 97.9
-    },
-    {
-      "fingerprint": "d9e32bf034471e50",
-      "host": "15.204.97.197",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 318,
-      "score": 97.8
-    },
-    {
-      "fingerprint": "c2e67e5b6a5ba55f",
-      "host": "82.38.31.82",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 322,
-      "score": 97.8
-    },
-    {
-      "fingerprint": "9d26f954786df313",
-      "host": "82.38.31.186",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 319,
-      "score": 97.8
-    },
-    {
-      "fingerprint": "1f7a39b38167c14a",
-      "host": "82.38.31.175",
-      "port": 443,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 318,
-      "score": 97.8
-    },
-    {
-      "fingerprint": "8d2e9a709aa74f23",
-      "host": "193.29.139.202",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 324,
-      "score": 97.8
-    },
-    {
-      "fingerprint": "46d9a49407e3e21d",
-      "host": "15.204.97.219",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 319,
-      "score": 97.8
-    },
-    {
-      "fingerprint": "2d6137097cf01fe0",
-      "host": "82.38.31.179",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 319,
-      "score": 97.8
-    },
-    {
-      "fingerprint": "177b3a398c320b7f",
-      "host": "82.38.31.217",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 324,
-      "score": 97.8
-    },
-    {
-      "fingerprint": "0923fe943b96b481",
-      "host": "82.38.31.214",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 319,
-      "score": 97.8
-    },
-    {
-      "fingerprint": "00d475071bd8046e",
-      "host": "57.131.48.45",
-      "port": 8388,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "IT",
-      "latency_ms": 332,
-      "score": 97.7
-    },
-    {
-      "fingerprint": "ec43fe8837ea7153",
-      "host": "82.38.31.189",
-      "port": 8080,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 329,
-      "score": 97.7
-    },
-    {
-      "fingerprint": "17a4b6cc06727a05",
-      "host": "57.129.132.223",
-      "port": 80,
-      "protocol": "vmess",
-      "name": "",
-      "country_code": "GB",
-      "latency_ms": 337,
-      "score": 97.7
-    },
-    {
-      "fingerprint": "ef2b32362529c3f5",
-      "host": "204.216.216.23",
-      "port": 10086,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "IT",
-      "latency_ms": 344,
-      "score": 97.6
-    },
-    {
-      "fingerprint": "66d9be3abf71d2a6",
-      "host": "51.158.206.25",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 360,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "1196c3f72ce5a5b1",
-      "host": "51.158.206.86",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 360,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "12483b6acfcf8092",
-      "host": "51.158.206.8",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 363,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "cb96319da1f3d6a6",
-      "host": "51.158.206.12",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 364,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "d0077965efa38d32",
-      "host": "51.158.206.93",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 358,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "2e3f20ae4e291ef9",
-      "host": "51.158.206.26",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 363,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "b836d1c3836aada6",
-      "host": "51.158.206.20",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 359,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "9c9f961783da3585",
-      "host": "51.158.206.103",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 361,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "a00a0799ad8913c9",
-      "host": "51.158.206.34",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 363,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "65b7f29c56494d9e",
-      "host": "51.158.206.97",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 362,
-      "score": 97.5
-    },
-    {
-      "fingerprint": "7847d344b8770006",
-      "host": "51.158.206.98",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 370,
-      "score": 97.4
-    },
-    {
-      "fingerprint": "4a90534da0ac71b2",
-      "host": "51.158.206.87",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 375,
-      "score": 97.4
-    },
-    {
-      "fingerprint": "386ec726c53e6b13",
-      "host": "51.158.206.80",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 366,
-      "score": 97.4
-    },
-    {
-      "fingerprint": "0cacc50b4996d174",
-      "host": "51.158.206.19",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 367,
-      "score": 97.4
-    },
-    {
-      "fingerprint": "260f543c64145134",
-      "host": "51.158.206.29",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 366,
-      "score": 97.4
-    },
-    {
-      "fingerprint": "1d8d7117b06fa921",
-      "host": "177.3.222.100",
-      "port": 443,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 374,
-      "score": 97.4
-    },
-    {
-      "fingerprint": "ab0bb11374986236",
-      "host": "51.158.206.96",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 368,
-      "score": 97.4
-    },
-    {
-      "fingerprint": "913c20b37377d535",
-      "host": "152.228.162.19",
-      "port": 80,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 393,
-      "score": 97.2
-    },
-    {
-      "fingerprint": "914b735bf1c00fdc",
-      "host": "104.19.64.105",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 398,
-      "score": 97.2
-    },
-    {
-      "fingerprint": "638c955cc208394b",
-      "host": "45.80.111.7",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 398,
-      "score": 97.2
-    },
-    {
-      "fingerprint": "dd55421cab9a12ed",
-      "host": "142.249.37.90",
-      "port": 44356,
-      "protocol": "hysteria2",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 315,
-      "score": 97.1
-    },
-    {
-      "fingerprint": "48dbf7578055459d",
-      "host": "62.210.91.10",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 403,
-      "score": 97.1
-    },
-    {
-      "fingerprint": "f3c00cad68c011f7",
-      "host": "104.16.72.41",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 408,
-      "score": 97.1
-    },
-    {
-      "fingerprint": "ce25f9d8811d750b",
-      "host": "212.183.88.136",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 408,
-      "score": 97.1
-    },
-    {
-      "fingerprint": "c7cfee6841778627",
-      "host": "62.210.91.2",
-      "port": 23576,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 421,
-      "score": 97.0
+      "latency_ms": 250,
+      "score": 98.4
     },
     {
       "fingerprint": "bfc697ec87089ca5",
@@ -868,28 +238,288 @@
       "protocol": "ss",
       "name": "",
       "country_code": "JP",
-      "latency_ms": 469,
+      "latency_ms": 338,
+      "score": 97.7
+    },
+    {
+      "fingerprint": "1dbd6b3b054e1798",
+      "host": "158.173.20.208",
+      "port": 443,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 425,
+      "score": 97.0
+    },
+    {
+      "fingerprint": "cd94b5db5bd4a359",
+      "host": "8.209.74.72",
+      "port": 20001,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "DE",
+      "latency_ms": 420,
+      "score": 97.0
+    },
+    {
+      "fingerprint": "2601b62d08c5ad9d",
+      "host": "178.83.185.156",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 434,
+      "score": 96.9
+    },
+    {
+      "fingerprint": "ec16276a73f27ba0",
+      "host": "82.38.31.62",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 436,
+      "score": 96.9
+    },
+    {
+      "fingerprint": "e6889f7a77edbb97",
+      "host": "82.38.31.61",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 437,
+      "score": 96.9
+    },
+    {
+      "fingerprint": "46dac716ce70d673",
+      "host": "141.98.101.181",
+      "port": 443,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "GB",
+      "latency_ms": 440,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "ea7fdafe0a74a163",
+      "host": "82.38.31.199",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 450,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "e1aceb3ff882f9e0",
+      "host": "209.46.102.22",
+      "port": 8388,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "DE",
+      "latency_ms": 449,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "07d47ac6ecd28de2",
+      "host": "82.38.31.171",
+      "port": 443,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 445,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "c2e67e5b6a5ba55f",
+      "host": "82.38.31.82",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 442,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "548b19f2284d38c8",
+      "host": "82.38.31.205",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 450,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "9d26f954786df313",
+      "host": "82.38.31.186",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 443,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "103e7f6d073cfe03",
+      "host": "82.38.31.66",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 449,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "6ee884060f5ffa15",
+      "host": "82.38.31.69",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 448,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "1f7a39b38167c14a",
+      "host": "82.38.31.175",
+      "port": 443,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 445,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "484fc06b10f531e7",
+      "host": "82.38.31.175",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 446,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "91a4d30cf1873e6f",
+      "host": "82.38.31.174",
+      "port": 443,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 449,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "82bfbc25b8f1a176",
+      "host": "82.38.31.162",
+      "port": 443,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 443,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "8d2e9a709aa74f23",
+      "host": "193.29.139.202",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 445,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "2fea3843d13512b7",
+      "host": "193.29.139.204",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 445,
+      "score": 96.8
+    },
+    {
+      "fingerprint": "177b3a398c320b7f",
+      "host": "82.38.31.217",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 461,
+      "score": 96.7
+    },
+    {
+      "fingerprint": "6efb3e24f1655e1f",
+      "host": "82.38.31.210",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 457,
+      "score": 96.7
+    },
+    {
+      "fingerprint": "0923fe943b96b481",
+      "host": "82.38.31.214",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 457,
+      "score": 96.7
+    },
+    {
+      "fingerprint": "1df74ea6b7f86301",
+      "host": "193.29.139.151",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 464,
+      "score": 96.7
+    },
+    {
+      "fingerprint": "7447f6f85c95cb71",
+      "host": "193.29.139.235",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 465,
       "score": 96.6
     },
     {
-      "fingerprint": "c453e23fc3e4394c",
-      "host": "185.213.23.63",
-      "port": 990,
+      "fingerprint": "2d6137097cf01fe0",
+      "host": "82.38.31.179",
+      "port": 8080,
       "protocol": "ss",
       "name": "",
-      "country_code": "NO",
-      "latency_ms": 483,
-      "score": 96.5
+      "country_code": "NL",
+      "latency_ms": 465,
+      "score": 96.6
     },
     {
-      "fingerprint": "3ceb66f46a2519b6",
-      "host": "57.129.41.216",
-      "port": 80,
-      "protocol": "vless",
+      "fingerprint": "76c5642cdc431aed",
+      "host": "82.38.31.202",
+      "port": 8080,
+      "protocol": "ss",
       "name": "",
-      "country_code": "DE",
-      "latency_ms": 563,
-      "score": 95.9
+      "country_code": "NL",
+      "latency_ms": 500,
+      "score": 96.4
+    },
+    {
+      "fingerprint": "ec43fe8837ea7153",
+      "host": "82.38.31.189",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 496,
+      "score": 96.4
     },
     {
       "fingerprint": "158ed7ecf70449b9",
@@ -898,78 +528,18 @@
       "protocol": "vmess",
       "name": "",
       "country_code": "KR",
-      "latency_ms": 626,
-      "score": 95.3
+      "latency_ms": 490,
+      "score": 96.4
     },
     {
-      "fingerprint": "77cbeef79e0d5f83",
-      "host": "45.9.156.42",
-      "port": 443,
-      "protocol": "vless",
+      "fingerprint": "00d475071bd8046e",
+      "host": "57.131.48.45",
+      "port": 8388,
+      "protocol": "ss",
       "name": "",
-      "country_code": "BG",
-      "latency_ms": 724,
-      "score": 94.6
-    },
-    {
-      "fingerprint": "24dbc1255d988a4d",
-      "host": "149.88.23.207",
-      "port": 18000,
-      "protocol": "vmess",
-      "name": "",
-      "country_code": "SG",
-      "latency_ms": 739,
-      "score": 94.4
-    },
-    {
-      "fingerprint": "d7ff7b9250e6f250",
-      "host": "132.145.80.230",
-      "port": 80,
-      "protocol": "vmess",
-      "name": "",
-      "country_code": "KR",
-      "latency_ms": 791,
-      "score": 94.0
-    },
-    {
-      "fingerprint": "35a31dc284d856f3",
-      "host": "104.18.9.83",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 405,
-      "score": 90.9
-    },
-    {
-      "fingerprint": "53a39628de39e390",
-      "host": "45.130.125.160",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 423,
-      "score": 90.7
-    },
-    {
-      "fingerprint": "c4f83c82a220862f",
-      "host": "104.18.8.83",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 421,
-      "score": 90.4
-    },
-    {
-      "fingerprint": "3029632a61369ea1",
-      "host": "146.235.16.130",
-      "port": 19825,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "SG",
-      "latency_ms": 1042,
-      "score": 88.9
+      "country_code": "IT",
+      "latency_ms": 503,
+      "score": 96.3
     },
     {
       "fingerprint": "36a14f7ced6fa1e0",
@@ -978,38 +548,218 @@
       "protocol": "ss",
       "name": "",
       "country_code": "GB",
-      "latency_ms": 1605,
-      "score": 87.4
+      "latency_ms": 513,
+      "score": 96.3
     },
     {
-      "fingerprint": "17d6f128f0a9aff4",
-      "host": "107.181.151.241",
-      "port": 443,
+      "fingerprint": "66d9be3abf71d2a6",
+      "host": "51.158.206.25",
+      "port": 23576,
       "protocol": "vless",
       "name": "",
-      "country_code": "FI",
-      "latency_ms": 1575,
-      "score": 86.5
+      "country_code": "NL",
+      "latency_ms": 537,
+      "score": 96.1
     },
     {
-      "fingerprint": "dc789246de6f2665",
-      "host": "15.204.233.41",
-      "port": 8882,
+      "fingerprint": "386ec726c53e6b13",
+      "host": "51.158.206.80",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 535,
+      "score": 96.1
+    },
+    {
+      "fingerprint": "9c9f961783da3585",
+      "host": "51.158.206.103",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 538,
+      "score": 96.1
+    },
+    {
+      "fingerprint": "4a90534da0ac71b2",
+      "host": "51.158.206.87",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 538,
+      "score": 96.1
+    },
+    {
+      "fingerprint": "cb96319da1f3d6a6",
+      "host": "51.158.206.12",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 534,
+      "score": 96.1
+    },
+    {
+      "fingerprint": "e1c6050802189e94",
+      "host": "193.29.139.235",
+      "port": 443,
       "protocol": "ss",
       "name": "",
-      "country_code": "US",
-      "latency_ms": 1729,
-      "score": 86.4
+      "country_code": "NL",
+      "latency_ms": 443,
+      "score": 96.0
     },
     {
-      "fingerprint": "5e294c0bddfae510",
-      "host": "77.91.68.70",
-      "port": 55983,
+      "fingerprint": "ab0bb11374986236",
+      "host": "51.158.206.96",
+      "port": 23576,
       "protocol": "vless",
       "name": "",
-      "country_code": "AM",
-      "latency_ms": 1759,
-      "score": 86.2
+      "country_code": "NL",
+      "latency_ms": 541,
+      "score": 96.0
+    },
+    {
+      "fingerprint": "b836d1c3836aada6",
+      "host": "51.158.206.20",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 545,
+      "score": 96.0
+    },
+    {
+      "fingerprint": "a00a0799ad8913c9",
+      "host": "51.158.206.34",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 540,
+      "score": 96.0
+    },
+    {
+      "fingerprint": "12483b6acfcf8092",
+      "host": "51.158.206.8",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 539,
+      "score": 96.0
+    },
+    {
+      "fingerprint": "65b7f29c56494d9e",
+      "host": "51.158.206.97",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 543,
+      "score": 96.0
+    },
+    {
+      "fingerprint": "1196c3f72ce5a5b1",
+      "host": "51.158.206.86",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 539,
+      "score": 96.0
+    },
+    {
+      "fingerprint": "48dbf7578055459d",
+      "host": "62.210.91.10",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 550,
+      "score": 96.0
+    },
+    {
+      "fingerprint": "386ca1f47d9a709c",
+      "host": "149.88.23.207",
+      "port": 18000,
+      "protocol": "vmess",
+      "name": "",
+      "country_code": "SG",
+      "latency_ms": 562,
+      "score": 95.9
+    },
+    {
+      "fingerprint": "c2cc4d46f0707cb1",
+      "host": "51.158.206.93",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 552,
+      "score": 95.9
+    },
+    {
+      "fingerprint": "7847d344b8770006",
+      "host": "51.158.206.98",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 555,
+      "score": 95.9
+    },
+    {
+      "fingerprint": "8579f1755a543baa",
+      "host": "185.226.172.8",
+      "port": 8008,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "DE",
+      "latency_ms": 558,
+      "score": 95.9
+    },
+    {
+      "fingerprint": "0cacc50b4996d174",
+      "host": "51.158.206.19",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 562,
+      "score": 95.9
+    },
+    {
+      "fingerprint": "c7cfee6841778627",
+      "host": "62.210.91.2",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 567,
+      "score": 95.8
+    },
+    {
+      "fingerprint": "48a682518e7b05c6",
+      "host": "82.38.31.35",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 580,
+      "score": 95.7
+    },
+    {
+      "fingerprint": "cdb0b9769452cd8e",
+      "host": "51.158.206.26",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 594,
+      "score": 95.6
     },
     {
       "fingerprint": "a6a5dfa78dfc3437",
@@ -1018,108 +768,168 @@
       "protocol": "ss",
       "name": "",
       "country_code": "NL",
-      "latency_ms": 315,
-      "score": 85.4
+      "latency_ms": 592,
+      "score": 95.6
     },
     {
-      "fingerprint": "a97f993a15058a62",
-      "host": "188.114.97.6",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 437,
-      "score": 83.8
-    },
-    {
-      "fingerprint": "4fe823d72d7c4238",
-      "host": "188.114.98.0",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 419,
-      "score": 81.4
-    },
-    {
-      "fingerprint": "7445cd5b4f27cc09",
-      "host": "45.12.75.242",
-      "port": 26424,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "RU",
-      "latency_ms": 1369,
-      "score": 81.1
-    },
-    {
-      "fingerprint": "85ac324e2a2ff038",
-      "host": "54.36.174.140",
-      "port": 443,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "PL",
-      "latency_ms": 347,
-      "score": 80.8
-    },
-    {
-      "fingerprint": "9bc495cc6c599358",
-      "host": "172.64.152.23",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "FR",
-      "latency_ms": 400,
-      "score": 79.0
-    },
-    {
-      "fingerprint": "b337dcf7e383c05d",
-      "host": "195.123.235.177",
-      "port": 443,
-      "protocol": "vless",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 72,
-      "score": 78.8
-    },
-    {
-      "fingerprint": "e2b7a10ab176ec41",
-      "host": "51.79.64.198",
-      "port": 8119,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "CA",
-      "latency_ms": 3375,
-      "score": 72.1
-    },
-    {
-      "fingerprint": "a75fe25767b6bd39",
-      "host": "15.204.247.124",
-      "port": 2375,
-      "protocol": "ss",
-      "name": "",
-      "country_code": "US",
-      "latency_ms": 2354,
-      "score": 71.2
-    },
-    {
-      "fingerprint": "a82e2622d03c737d",
-      "host": "163.172.214.188",
+      "fingerprint": "3ceb66f46a2519b6",
+      "host": "57.129.41.216",
       "port": 80,
       "protocol": "vless",
       "name": "",
-      "country_code": "NL",
-      "latency_ms": 546,
-      "score": 69.2
+      "country_code": "DE",
+      "latency_ms": 623,
+      "score": 95.4
     },
     {
-      "fingerprint": "0daa0d46c6a57d62",
-      "host": "169.40.42.182",
+      "fingerprint": "d7ff7b9250e6f250",
+      "host": "132.145.80.230",
+      "port": 80,
+      "protocol": "vmess",
+      "name": "",
+      "country_code": "KR",
+      "latency_ms": 627,
+      "score": 95.3
+    },
+    {
+      "fingerprint": "cab9ead8bec45e09",
+      "host": "188.241.241.235",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "DE",
+      "latency_ms": 648,
+      "score": 95.2
+    },
+    {
+      "fingerprint": "fea2cea0fbf344c0",
+      "host": "205.237.110.254",
       "port": 443,
       "protocol": "vless",
       "name": "",
+      "country_code": "GB",
+      "latency_ms": 674,
+      "score": 95.0
+    },
+    {
+      "fingerprint": "914b735bf1c00fdc",
+      "host": "104.19.64.105",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 675,
+      "score": 94.9
+    },
+    {
+      "fingerprint": "638c955cc208394b",
+      "host": "45.80.111.7",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 699,
+      "score": 94.8
+    },
+    {
+      "fingerprint": "f3c00cad68c011f7",
+      "host": "104.16.72.41",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 689,
+      "score": 94.8
+    },
+    {
+      "fingerprint": "e9583813c1f26346",
+      "host": "188.241.241.236",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "DE",
+      "latency_ms": 617,
+      "score": 94.7
+    },
+    {
+      "fingerprint": "ce25f9d8811d750b",
+      "host": "212.183.88.136",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 708,
+      "score": 94.7
+    },
+    {
+      "fingerprint": "98930401449ccfb6",
+      "host": "103.11.76.248",
+      "port": 28679,
+      "protocol": "ss",
+      "name": "",
       "country_code": "US",
-      "latency_ms": 4346,
-      "score": 65.3
+      "latency_ms": 737,
+      "score": 94.4
+    },
+    {
+      "fingerprint": "260f543c64145134",
+      "host": "51.158.206.29",
+      "port": 23576,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 758,
+      "score": 94.3
+    },
+    {
+      "fingerprint": "c77dbf6c8b24d0e7",
+      "host": "82.38.31.155",
+      "port": 8080,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 800,
+      "score": 93.9
+    },
+    {
+      "fingerprint": "43566cc26e0bfb9b",
+      "host": "15.204.246.132",
+      "port": 7307,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 195,
+      "score": 93.5
+    },
+    {
+      "fingerprint": "913c20b37377d535",
+      "host": "152.228.162.19",
+      "port": 80,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 885,
+      "score": 93.3
+    },
+    {
+      "fingerprint": "0d17dbd612c20848",
+      "host": "152.67.8.205",
+      "port": 80,
+      "protocol": "vmess",
+      "name": "",
+      "country_code": "IN",
+      "latency_ms": 952,
+      "score": 91.9
+    },
+    {
+      "fingerprint": "3029632a61369ea1",
+      "host": "146.235.16.130",
+      "port": 19825,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "SG",
+      "latency_ms": 755,
+      "score": 91.2
     },
     {
       "fingerprint": "532a31cab6a405ca",
@@ -1128,18 +938,78 @@
       "protocol": "ss",
       "name": "",
       "country_code": "CA",
-      "latency_ms": 1821,
-      "score": 62.7
+      "latency_ms": 1182,
+      "score": 90.9
     },
     {
-      "fingerprint": "5ba013487ebd7169",
-      "host": "51.222.12.127",
-      "port": 445,
+      "fingerprint": "c453e23fc3e4394c",
+      "host": "185.213.23.63",
+      "port": 990,
       "protocol": "ss",
       "name": "",
-      "country_code": "CA",
-      "latency_ms": 3219,
-      "score": 62.6
+      "country_code": "NO",
+      "latency_ms": 1217,
+      "score": 90.6
+    },
+    {
+      "fingerprint": "9f4c23c43ed0ae81",
+      "host": "161.97.160.224",
+      "port": 443,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 1222,
+      "score": 90.5
+    },
+    {
+      "fingerprint": "fb5a2d743db5f06b",
+      "host": "104.18.9.83",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 662,
+      "score": 88.8
+    },
+    {
+      "fingerprint": "f14ba7111917e2ad",
+      "host": "188.114.98.0",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 801,
+      "score": 88.5
+    },
+    {
+      "fingerprint": "dfa5ad2a8de65bba",
+      "host": "104.18.8.83",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 679,
+      "score": 88.3
+    },
+    {
+      "fingerprint": "ef2b32362529c3f5",
+      "host": "204.216.216.23",
+      "port": 10086,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "IT",
+      "latency_ms": 480,
+      "score": 88.2
+    },
+    {
+      "fingerprint": "2c55f0c0eb495e37",
+      "host": "165.154.195.38",
+      "port": 35034,
+      "protocol": "vmess",
+      "name": "",
+      "country_code": "TW",
+      "latency_ms": 470,
+      "score": 87.9
     },
     {
       "fingerprint": "74d98083815bc569",
@@ -1148,58 +1018,98 @@
       "protocol": "vless",
       "name": "",
       "country_code": "NL",
-      "latency_ms": 425,
-      "score": 62.0
+      "latency_ms": 555,
+      "score": 85.6
     },
     {
-      "fingerprint": "ed885b6de27b6a0b",
+      "fingerprint": "17d6f128f0a9aff4",
+      "host": "107.181.151.241",
+      "port": 443,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "FI",
+      "latency_ms": 1830,
+      "score": 82.5
+    },
+    {
+      "fingerprint": "a97f993a15058a62",
+      "host": "188.114.97.6",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "NL",
+      "latency_ms": 706,
+      "score": 81.6
+    },
+    {
+      "fingerprint": "81f271e0b1bf5ff3",
       "host": "83.222.23.81",
       "port": 38065,
       "protocol": "vless",
       "name": "",
       "country_code": "KZ",
-      "latency_ms": 1967,
-      "score": 61.9
+      "latency_ms": 1538,
+      "score": 80.3
     },
     {
-      "fingerprint": "af9522ee3d587505",
-      "host": "78.17.171.62",
-      "port": 443,
-      "protocol": "trojan",
-      "name": "",
-      "country_code": "NL",
-      "latency_ms": 4857,
-      "score": 61.2
-    },
-    {
-      "fingerprint": "13c586887cfcc0c6",
-      "host": "15.204.246.107",
-      "port": 8888,
+      "fingerprint": "724785c50e5d47eb",
+      "host": "15.204.247.206",
+      "port": 4444,
       "protocol": "ss",
       "name": "",
       "country_code": "US",
-      "latency_ms": 3670,
-      "score": 53.5
+      "latency_ms": 2668,
+      "score": 78.8
     },
     {
-      "fingerprint": "f2eba76a0aefca7b",
-      "host": "156.245.232.239",
-      "port": 35043,
+      "fingerprint": "9bc495cc6c599358",
+      "host": "172.64.152.23",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 690,
+      "score": 76.7
+    },
+    {
+      "fingerprint": "17a4b6cc06727a05",
+      "host": "57.129.132.223",
+      "port": 80,
       "protocol": "vmess",
       "name": "",
-      "country_code": "HK",
-      "latency_ms": 1716,
-      "score": 50.0
+      "country_code": "GB",
+      "latency_ms": 553,
+      "score": 76.5
     },
     {
-      "fingerprint": "c370069f47747bdb",
-      "host": "141.164.45.187",
-      "port": 9090,
-      "protocol": "ss",
+      "fingerprint": "a82e2622d03c737d",
+      "host": "163.172.214.188",
+      "port": 80,
+      "protocol": "vless",
       "name": "",
-      "country_code": "KR",
-      "latency_ms": 656,
-      "score": 39.7
+      "country_code": "NL",
+      "latency_ms": 538,
+      "score": 73.7
+    },
+    {
+      "fingerprint": "a3074ca7472b25da",
+      "host": "185.18.250.252",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 673,
+      "score": 73.1
+    },
+    {
+      "fingerprint": "640744ebe71f6ff2",
+      "host": "104.18.32.47",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "FR",
+      "latency_ms": 676,
+      "score": 72.9
     },
     {
       "fingerprint": "24ad923ed99b2235",
@@ -1208,8 +1118,78 @@
       "protocol": "ss",
       "name": "",
       "country_code": "KR",
-      "latency_ms": 2692,
-      "score": 30.0
+      "latency_ms": 1470,
+      "score": 72.6
+    },
+    {
+      "fingerprint": "5ba013487ebd7169",
+      "host": "51.222.12.127",
+      "port": 445,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "CA",
+      "latency_ms": 2454,
+      "score": 72.2
+    },
+    {
+      "fingerprint": "5bd5b2913c1aa7c1",
+      "host": "51.79.49.116",
+      "port": 8882,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "CA",
+      "latency_ms": 3378,
+      "score": 70.7
+    },
+    {
+      "fingerprint": "7445cd5b4f27cc09",
+      "host": "45.12.75.242",
+      "port": 26424,
+      "protocol": "vless",
+      "name": "",
+      "country_code": "RU",
+      "latency_ms": 1192,
+      "score": 69.7
+    },
+    {
+      "fingerprint": "d22ff5a696c6229a",
+      "host": "198.98.53.130",
+      "port": 443,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 195,
+      "score": 67.1
+    },
+    {
+      "fingerprint": "8e01c40c76558035",
+      "host": "188.241.241.122",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "DE",
+      "latency_ms": 2615,
+      "score": 48.5
+    },
+    {
+      "fingerprint": "13c586887cfcc0c6",
+      "host": "15.204.246.107",
+      "port": 8888,
+      "protocol": "ss",
+      "name": "",
+      "country_code": "US",
+      "latency_ms": 4639,
+      "score": 39.9
+    },
+    {
+      "fingerprint": "182bd334ac581bf9",
+      "host": "188.241.241.102",
+      "port": 443,
+      "protocol": "trojan",
+      "name": "",
+      "country_code": "DE",
+      "latency_ms": 4640,
+      "score": 31.1
     }
   ]
 }
